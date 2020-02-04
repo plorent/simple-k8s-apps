@@ -2,7 +2,17 @@
 
 - Based on https://github.com/kubernetes/examples/tree/master/guestbook
 
-## Redis Master
+## Deploying in the Declarative GitOps style using ArgoCD
+
+- prerequisite
+
+We have deployed ArgoCD and we have it running with the UI available on localhost:8080
+
+First connect this repo in ArgoCD. Next, create an application and point to the path stateless-guestbook. All that is left to do now, is to sync this application. Watch the application being deployed.
+
+## Deploying manually (or in the imparative style)
+
+### Redis Master
 
 deploy the master Redis pod and a _service_ on top of it:
 
@@ -12,7 +22,7 @@ kubectl get pods
 kubectl get services
 ```
 
-## Redis Slaves
+### Redis Slaves
 
 deploy the Redis slave pods and a _service_ on top of it:
 
@@ -22,7 +32,7 @@ kubectl get pods
 kubectl get services
 ```
 
-## Frontend Application
+### Frontend Application
 
 deploy the PHP Frontend pods and a _service_ of type **NodePort** on top of it, to expose the service and later on use the ALB Controller to route traffic to the guestbook:
 
@@ -39,7 +49,7 @@ kubectl get pods -l app=guestbook
 kubectl get pods -l app=guestbook -l tier=frontend
 ```
 
-## Access from outside the cluster
+### Access from outside the cluster
 
 With the ALB Controller up and running:
 
@@ -61,7 +71,7 @@ kubectl get ingress/guestbook-ingress
 
 and grab the public URL and check the URL in your browser.&nbsp;&nbsp;
 
-## Kubectl commands for scaling pods
+### Kubectl commands for scaling pods
 
 scaling a deployment:
 
