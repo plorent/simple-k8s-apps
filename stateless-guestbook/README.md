@@ -59,8 +59,7 @@ After a while, check the status of the service:
 kubectl get ingress/guestbook-ingress
 ```
 
-and grab the public URL and check the URL in your browser.
-
+and grab the public URL and check the URL in your browser.&nbsp;&nbsp;
 
 ## kubectl commands for scaling pods
 
