@@ -24,10 +24,11 @@ kubectl get services
 
 ## Frontend Application
 
-deploy the PHP Frontend pods and a _service_ of type **LoadBalancer** on top of it, to expose the load-balanced service to the public via ELB:
+deploy the PHP Frontend pods and a _service_ of type **NodePort** on top of it, to expose the service and later on use the ALB Controller to route traffic to the guestbook:
 
 ```bash
 kubectl apply -f frontend.yaml
+kubectl apply -f frontend-service.yaml
 ```
 
 Some checks:
@@ -38,17 +39,27 @@ kubectl get pods -l app=guestbook
 kubectl get pods -l app=guestbook -l tier=frontend
 ```
 
-Check AWS management console for the ELB which has been created
-
 ## Access from outside the cluster
 
-grab the public DNS of the frontend service LoadBalancer (ELB):
+With the ALB Controller up and running:
 
 ```bash
-kubectl describe service frontend
+kubectl get pods -n kube-system
 ```
 
-copy the name and paste it into your browser
+We can now route the ingress traffic to the guestbook:
+
+```bash
+kubectl apply -f ingress.yaml
+```
+
+After a while, check the status of the service:
+
+```bash
+kubectl get ingress/guestbook-ingress
+```
+
+and grab the public URL and check the URL in your browser.
 
 ## kubectl commands for scaling pods
 
