@@ -61,6 +61,7 @@ kubectl get ingress/guestbook-ingress
 
 and grab the public URL and check the URL in your browser.&nbsp;
 
+
 ## kubectl commands for scaling pods
 
 scaling a deployment:
