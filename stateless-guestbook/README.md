@@ -8,9 +8,9 @@
 
 We have deployed ArgoCD and we have it running with the UI available on localhost:8080
 
-First connect this repo in ArgoCD. Next, create an application and point to the path stateless-guestbook. All that is left to do now, is to sync this application. Watch the application being deployed.
+First connect this repo in ArgoCD (details on how to do this are provided in the README in the *k8s-clusters* repository). Next, create an application and point to the path stateless-guestbook. All that is left to do now, is to sync this application. Watch the application being deployed.
 
-## Deploying manually (or in the imparative style)
+## Deploying manually (or in the imperative style) - just to practice k8s commands, otherwise use ArgoCD
 
 ### Redis Master
 
