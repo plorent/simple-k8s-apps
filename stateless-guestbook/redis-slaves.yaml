@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: guestbook-redis-slave
+  name: redis-slave
   labels:
     account: redis-slave
 ---
